@@ -4,8 +4,10 @@ import json
 import tkinter as tk
 from tkinter import filedialog, ttk, messagebox
 
+version = '1.0.0'
+
 # Config file path
-CONFIG_FILE = os.path.expanduser("~/.rail_data_downloader_config.json")
+CONFIG_FILE = os.path.expanduser("~/Documents/Rail Data Downloader/config.json")
 
 # Default settings
 DEFAULT_CONFIG = {
