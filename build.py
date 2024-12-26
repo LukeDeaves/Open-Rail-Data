@@ -4,7 +4,9 @@ import os
 
 # Define app name and version
 from app import version
+
 appname = 'National Rail Data Downloader'
+version = f'{appname} {version}'
 
 # Run PyInstaller
 PyInstaller.__main__.run([
@@ -22,16 +24,11 @@ os.makedirs(output_folder, exist_ok=True)
 for file in os.listdir('dist'):
     if file.endswith('.app'):
         # Save versioned app
-        versioned_path = os.path.join(output_folder, f'{appname} {version}.app')
-        if os.path.exists(versioned_path):
-            shutil.rmtree(versioned_path)
-        shutil.copytree(os.path.join('dist', file), os.path.join(output_folder, f'{appname} {version}.app'))
+        versioned_path = os.path.join(output_folder, version)
+        shutil.make_archive(versioned_path, 'zip', root_dir='dist', base_dir=file)
 
         # Save master app
-        master_path = os.path.join(output_folder, f'{appname}.app')
-        if os.path.exists(master_path):
-            shutil.rmtree(master_path)
-        shutil.move(os.path.join('dist', file), os.path.join(output_folder, file))
+        shutil.move(os.path.join('dist', file), os.path.join(output_folder, f'{version}.app'))
 
 # Clean up build files
 shutil.rmtree('build')
