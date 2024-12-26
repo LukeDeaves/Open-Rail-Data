@@ -21,7 +21,16 @@ os.makedirs(output_folder, exist_ok=True)
 # Move app to packages folder
 for file in os.listdir('dist'):
     if file.endswith('.app'):
+        # Save versioned app
+        versioned_path = os.path.join(output_folder, f'{appname} {version}.app')
+        if os.path.exists(versioned_path):
+            shutil.rmtree(versioned_path)
         shutil.copytree(os.path.join('dist', file), os.path.join(output_folder, f'{appname} {version}.app'))
+
+        # Save master app
+        master_path = os.path.join(output_folder, f'{appname}.app')
+        if os.path.exists(master_path):
+            shutil.rmtree(master_path)
         shutil.move(os.path.join('dist', file), os.path.join(output_folder, file))
 
 # Clean up build files
