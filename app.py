@@ -4,11 +4,7 @@ import json
 import tkinter as tk
 from tkinter import filedialog, ttk, messagebox
 
-app_name = "National Rail Data Downloader"
-version = '1.0.0'
-
-# Config file path
-CONFIG_FILE = os.path.expanduser(f"~/Documents/{app_name}/config.json")
+from config import CONFIG_DIR
 
 # Default settings
 DEFAULT_CONFIG = {
@@ -25,13 +21,13 @@ REPORT_URLS = {
 }
 
 def load_config():
-    if not os.path.exists(CONFIG_FILE):
+    if not os.path.exists(CONFIG_DIR):
         save_config(DEFAULT_CONFIG)
-    with open(CONFIG_FILE, "r") as config_file:
+    with open(CONFIG_DIR, "r") as config_file:
         return json.load(config_file)
 
 def save_config(config):
-    with open(CONFIG_FILE, "w") as config_file:
+    with open(CONFIG_DIR, "w") as config_file:
         json.dump(config, config_file, indent=4)
 
 # Prompt user to set missing credentials if not set
