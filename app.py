@@ -14,7 +14,7 @@ CONFIG_FILE = os.path.expanduser(f"~/Documents/{app_name}/config.json")
 DEFAULT_CONFIG = {
     "username": "",
     "password": "",
-    "save_location": os.path.expanduser("~/Downloads"),
+    "save_location": os.path.expanduser("~/Downloads")
 }
 
 # Report URLs
