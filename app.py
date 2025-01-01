@@ -4,10 +4,11 @@ import json
 import tkinter as tk
 from tkinter import filedialog, ttk, messagebox
 
+app_name = "National Rail Data Downloader"
 version = '1.0.0'
 
 # Config file path
-CONFIG_FILE = os.path.expanduser("~/Documents/Rail Data Downloader/config.json")
+CONFIG_FILE = os.path.expanduser(f"~/Documents/{app_name}/config.json")
 
 # Default settings
 DEFAULT_CONFIG = {
@@ -136,7 +137,7 @@ def main():
     prompt_for_credentials()
 
     root = tk.Tk()
-    root.title("National Rail Data Downloader")
+    root.title(app_name)
     root.geometry("500x300")
 
     tab_control = ttk.Notebook(root)
@@ -144,7 +145,7 @@ def main():
     # Download Tab
     download_tab = ttk.Frame(tab_control)
     tab_control.add(download_tab, text="Download Data")
-    tk.Label(download_tab, text="National Rail Data Downloader", font=("Helvetica", 16)).pack(pady=20)
+    tk.Label(download_tab, text=app_name, font=("Helvetica", 16)).pack(pady=20)
     tk.Label(download_tab, text="Choose a report to download:", font=("Helvetica", 12)).pack(pady=10)
 
     # Individual Download Buttons
